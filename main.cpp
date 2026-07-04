@@ -10,7 +10,7 @@ int main()
     FileManager fileManager;
 
     // read proccesses from the file
-    std::vector<Process> processes = fileManager.readFile("mlq001.txt");
+    std::vector<Process> processes = fileManager.readFile("mlq_David.txt");
     std::cout << "Procesos leidos: " << processes.size() << std::endl;
 
     MLQScheduler scheduler(processes);
