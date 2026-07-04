@@ -71,6 +71,7 @@ void FileManager::writeFile(const std::string& fileName,
 
     file << "ID\tBT\tAT\tQ\tPriority\tWT\tTAT\tRT\tCT\n";
 
+    // Escribir los procesos
     for(const Process& p : processes)
     {
         file << p.getIdProcess() << "\t"
@@ -84,6 +85,38 @@ void FileManager::writeFile(const std::string& fileName,
              << p.getCompletionTime()
              << "\n";
     }
+
+    // Calcular promedios
+    double avgWT = 0;
+    double avgTAT = 0;
+    double avgRT = 0;
+    double avgCT = 0;
+
+    for(const Process& p : processes)
+    {
+        avgWT += p.getWaitingTime();
+        avgTAT += p.getTurnaroundTime();
+        avgRT += p.getResponseTime();
+        avgCT += p.getCompletionTime();
+    }
+
+    int n = processes.size();
+
+    if(n > 0)
+    {
+        avgWT /= n;
+        avgTAT /= n;
+        avgRT /= n;
+        avgCT /= n;
+    }
+
+    // Escribir promedios
+    file << "\n";
+    file << "# WT=" << avgWT
+         << "; CT=" << avgCT
+         << "; RT=" << avgRT
+         << "; TAT=" << avgTAT
+         << ";\n";
 
     file.close();
 }

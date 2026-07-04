@@ -155,3 +155,24 @@ std::vector<Process> MLQScheduler::getProcesses()
 {
     return processes;
 }
+
+
+double MLQScheduler::getAverageWaitingTime()
+{
+    return averageWaitingTime;
+}
+
+double MLQScheduler::getAverageTurnaroundTime()
+{
+    return averageTurnaroundTime;
+}
+
+double MLQScheduler::getAverageResponseTime()
+{
+    return averageResponseTime;
+}
+
+double MLQScheduler::getAverageCompletionTime()
+{
+    return averageCompletionTime;
+}

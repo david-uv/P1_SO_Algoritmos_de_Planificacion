@@ -39,6 +39,11 @@ public:
     void calculateAverages();
 
     std::vector<Process> getProcesses();
+
+    double getAverageWaitingTime();
+    double getAverageTurnaroundTime();
+    double getAverageResponseTime();
+    double getAverageCompletionTime();
 };
 
 #endif
